@@ -1,0 +1,26 @@
+type Painter {
+    id: ID!
+    name: String!
+    country: String!
+    paintings: [Painting!]!
+}
+
+type Painting {
+    id: ID!
+    title: String!
+    painter: Painter!
+}
+
+type Query {
+    painters: [Painter!]!
+    paintings: [Painting!]!
+    painter(id: ID!): Painter
+    searchPaintingsByTitle(title: String!): [Painting!]!
+}
+
+type Mutation {
+    addPainter(name: String!): Painter!
+    addPainting(title: String!, painterId: ID!): Painting!
+    updatePainter(id: ID!, name: String!): Painter!
+    deletePainting(id: ID!): Painting
+}
